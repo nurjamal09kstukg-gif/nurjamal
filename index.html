@@ -3,191 +3,214 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nurjamal | Portfolio</title>
+    <title>NURJAMAL | Avant-Garde Fashion</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --gold-primary: #D4AF37;
-            --gold-light: #F9F295;
-            --gold-dark: #996515;
-            --bg-dark: #0f0f0f;
-            --text-color: #fff;
+            --gold-light: #FFF9E3;
+            --gold-bright: #FFD700;
+            --gold-metallic: #D4AF37;
+            --gold-soft: #C5A059;
+            --dark-space: #050505;
+            --glass: rgba(255, 255, 255, 0.03);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Cinzel', serif; /* Элегантный шрифт для моды */
         }
 
         body {
-            background-color: var(--bg-dark);
-            background-image: radial-gradient(circle at top right, #2c2412, #0f0f0f);
-            color: var(--text-color);
-            line-height: 1.6;
+            background-color: var(--dark-space);
+            color: #fff;
             overflow-x: hidden;
         }
 
-        /* Красивый золотой фон с анимацией */
-        .hero {
+        /* Анимированный золотой фон */
+        .bg-glow {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% -20%, #2a2208 0%, #050505 80%);
+            z-index: -1;
+        }
+
+        /* Шапка сайта */
+        header {
             height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: linear-gradient(45deg, rgba(0,0,0,0.7), rgba(0,0,0,0.3)), 
-                        url('https://images.unsplash.com/photo-1518531966227-b4308a3d6e73?auto=format&fit=crop&q=80&w=1920'); /* Золотистый абстрактный фон */
-            background-size: cover;
-            background-position: center;
-            border-bottom: 2px solid var(--gold-primary);
+            border-bottom: 1px solid var(--gold-metallic);
         }
 
-        h1 {
-            font-size: 3.5rem;
-            background: linear-gradient(to right, var(--gold-light), var(--gold-primary), var(--gold-dark));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
-            letter-spacing: 2px;
-        }
-
-        .gallery {
-            padding: 50px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            border-radius: 15px;
-            overflow: hidden;
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            backdrop-filter: blur(5px);
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
-            border-color: var(--gold-primary);
-        }
-
-        .card img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            filter: sepia(30%) contrast(1.1);
-            transition: 0.5s;
-        }
-
-        .card:hover img {
-            filter: sepia(0%) contrast(1);
-        }
-
-        .card-content {
+        .logo-container {
+            position: relative;
             padding: 20px;
         }
 
+        h1 {
+            font-size: clamp(3rem, 10vw, 6rem);
+            text-transform: uppercase;
+            letter-spacing: 15px;
+            background: linear-gradient(to bottom, var(--gold-light), var(--gold-bright), var(--gold-soft));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.3));
+        }
+
+        .subtitle {
+            color: var(--gold-metallic);
+            letter-spacing: 5px;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+
+        /* Галерея авангардной моды */
+        .gallery-container {
+            padding: 100px 5%;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .avant-card {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .avant-card:hover {
+            border-color: var(--gold-bright);
+            transform: scale(0.98);
+        }
+
+        .avant-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.8s;
+            filter: grayscale(40%) brightness(0.8);
+        }
+
+        .avant-card:hover img {
+            filter: grayscale(0%) brightness(1.1);
+            transform: scale(1.1);
+        }
+
+        .card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+            opacity: 0;
+            transition: 0.4s;
+        }
+
+        .avant-card:hover .card-overlay {
+            opacity: 1;
+        }
+
         /* Контакты */
-        .contact-section {
-            padding: 80px 20px;
+        .contact-grid {
+            padding: 100px 5%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            background: var(--glass);
+        }
+
+        .contact-item {
             text-align: center;
-            background: rgba(212, 175, 55, 0.05);
+            min-width: 250px;
         }
 
-        .btn {
-            display: inline-block;
-            padding: 15px 30px;
-            margin: 10px;
-            border-radius: 30px;
+        .contact-item i {
+            font-size: 2rem;
+            color: var(--gold-bright);
+            margin-bottom: 15px;
+        }
+
+        .contact-item a {
+            display: block;
+            color: #fff;
             text-decoration: none;
-            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 10px;
             transition: 0.3s;
-            border: 2px solid var(--gold-primary);
         }
 
-        .btn-gold {
-            background: linear-gradient(45deg, var(--gold-dark), var(--gold-primary));
-            color: #000;
+        .contact-item a:hover {
+            color: var(--gold-bright);
+            text-shadow: 0 0 10px var(--gold-metallic);
         }
 
-        .btn-gold:hover {
-            box-shadow: 0 0 20px var(--gold-primary);
-            transform: scale(1.05);
-        }
+        /* Продуманные мелочи: курсор и скролл */
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb { background: var(--gold-metallic); }
 
         footer {
-            padding: 40px;
             text-align: center;
-            border-top: 1px solid rgba(212, 175, 55, 0.2);
-            font-size: 0.9rem;
-            color: var(--gold-light);
-        }
-
-        /* Мелочи: плавная прокрутка */
-        html {
-            scroll-behavior: smooth;
+            padding: 50px;
+            color: rgba(255,255,255,0.4);
+            font-size: 0.8rem;
+            letter-spacing: 2px;
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <section class="hero">
-        <h1>NURJAMAL</h1>
-        <p style="color: var(--gold-light); font-style: italic;">Эстетика. Золото. Качество.</p>
-        <div style="margin-top: 30px;">
-            <a href="#gallery" class="btn btn-gold">Смотреть работы</a>
-        </div>
-    </section>
+    <div class="bg-glow"></div>
 
-    <section id="gallery" class="gallery">
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1573162738235-428de038166b?auto=format&fit=crop&q=80&w=600" alt="Gold 1">
-            <div class="card-content">
-                <h3 style="color: var(--gold-primary);">Золотой Декор</h3>
-                <p>Продуманные детали в каждом пикселе.</p>
-            </div>
+    <header>
+        <div class="logo-container">
+            <h1>NURJAMAL</h1>
+            <div class="subtitle">AVANT-GARDE FASHION HOUSE</div>
         </div>
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=600" alt="Gold 2">
-            <div class="card-content">
-                <h3 style="color: var(--gold-primary);">Стиль и Роскошь</h3>
-                <p>Индивидуальный подход к вашим проектам.</p>
-            </div>
-        </div>
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&q=80&w=600" alt="Gold 3">
-            <div class="card-content">
-                <h3 style="color: var(--gold-primary);">Качество</h3>
-                <p>Использование премиальных материалов и идей.</p>
-            </div>
-        </div>
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1533038590840-1cde6e668a91?auto=format&fit=crop&q=80&w=600" alt="Gold 4">
-            <div class="card-content">
-                <h3 style="color: var(--gold-primary);">Гармония</h3>
-                <p>Идеальное сочетание света и тени.</p>
-            </div>
-        </div>
-    </section>
+    </header>
 
-    <section class="contact-section">
-        <h2 style="margin-bottom: 30px; font-size: 2rem;">Свяжитесь со мной</h2>
-        <a href="tel:+996554701570" class="btn btn-gold">
-            <i class="fas fa-phone"></i> +996 554 701 570
-        </a>
-        <a href="https://t.me/Nurjamal11111" target="_blank" class="btn" style="color: var(--gold-primary);">
-            <i class="fab fa-telegram"></i> Telegram: Nurjamal11111
-        </a>
+    <main class="gallery-container">
+        <div class="avant-card"><img src="https://images.unsplash.com/photo-1539109132314-34a9c6553876?q=80&w=600" alt="Art 1"><div class="card-overlay">Look 01 / Abstract Shape</div></div>
+        <div class="avant-card"><img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=600" alt="Art 2"><div class="card-overlay">Look 02 / Gold Silk</div></div>
+        <div class="avant-card"><img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=600" alt="Art 3"><div class="card-overlay">Look 03 / Future Texture</div></div>
+        <div class="avant-card"><img src="https://images.unsplash.com/photo-1549416878-b9ca35c2d47a?q=80&w=600" alt="Art 4"><div class="card-overlay">Look 04 / Geometry</div></div>
+        <div class="avant-card"><img src="https://images.unsplash.com/photo-1581044777550-4cfa60707c33?q=80&w=600" alt="Art 5"><div class="card-overlay">Look 05 / Metallic Flow</div></div>
+        <div class="avant-card"><img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=600" alt="Art 6"><div class="card-overlay">Look 06 / Pure Gold</div></div>
+        <div class="avant-card"><img src="https://images.unsplash.com/photo-1537832816519-689ad163238b?q=80&w=600" alt="Art 7"><div class="card-overlay">Look 07 / High Tech</div></div>
+        <div class="avant-card"><img src="https://images.unsplash.com/photo-1503104834685-7205e8607eb9?q=80&w=600" alt="Art 8"><div class="card-overlay">Look 08 / Dark Avant</div></div>
+        <div class="avant-card"><img src="https://images.unsplash.com/photo-1502716119720-b23a93e5fe1b?q=80&w=600" alt="Art 9"><div class="card-overlay">Look 09 / Final Touch</div></div>
+    </main>
+
+    <section class="contact-grid">
+        <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <h3>Phone</h3>
+            <a href="tel:+996554701570">+996 554 701 570</a>
+        </div>
+        <div class="contact-item">
+            <i class="fab fa-telegram"></i>
+            <h3>Telegram</h3>
+            <a href="https://t.me/Nurjamal11111" target="_blank">@Nurjamal11111</a>
+        </div>
+        <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <h3>Email</h3>
+            <a href="mailto:nurzhamal.2509.kg@gmail.com">nurzhamal.2509.kg@gmail.com</a>
+        </div>
     </section>
 
     <footer>
-        <p>&copy; 2024 Nurjamal. Все права защищены. Дизайн в золотых тонах.</p>
+        &copy; 2024 NURJAMAL DESIGN. CREATED FOR ETERNITY.
     </footer>
 
 </body>
