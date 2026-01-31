@@ -3,215 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NURJAMAL | Avant-Garde Fashion</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Food Video Gallery</title>
     <style>
         :root {
-            --gold-light: #FFF9E3;
-            --gold-bright: #FFD700;
-            --gold-metallic: #D4AF37;
-            --gold-soft: #C5A059;
-            --dark-space: #050505;
-            --glass: rgba(255, 255, 255, 0.03);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Cinzel', serif; /* Элегантный шрифт для моды */
+            --bg-color: #f4f7f6;
+            --card-bg: #ffffff;
+            --accent-color: #ff4757;
+            --text-color: #2f3542;
         }
 
         body {
-            background-color: var(--dark-space);
-            color: #fff;
-            overflow-x: hidden;
-        }
-
-        /* Анимированный золотой фон */
-        .bg-glow {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 50% -20%, #2a2208 0%, #050505 80%);
-            z-index: -1;
-        }
-
-        /* Шапка сайта */
-        header {
-            height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            text-align: center;
-            border-bottom: 1px solid var(--gold-metallic);
-        }
-
-        .logo-container {
-            position: relative;
-            padding: 20px;
+            padding: 40px 20px;
         }
 
         h1 {
-            font-size: clamp(3rem, 10vw, 6rem);
-            text-transform: uppercase;
-            letter-spacing: 15px;
-            background: linear-gradient(to bottom, var(--gold-light), var(--gold-bright), var(--gold-soft));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.3));
+            margin-bottom: 30px;
+            font-weight: 300;
+            color: var(--text-color);
         }
 
-        .subtitle {
-            color: var(--gold-metallic);
-            letter-spacing: 5px;
-            font-size: 0.9rem;
-            margin-top: 10px;
-        }
-
-        /* Галерея авангардной моды */
-        .gallery-container {
-            padding: 100px 5%;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-        }
-
-        .avant-card {
-            position: relative;
-            height: 500px;
-            overflow: hidden;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-
-        .avant-card:hover {
-            border-color: var(--gold-bright);
-            transform: scale(0.98);
-        }
-
-        .avant-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: 0.8s;
-            filter: grayscale(40%) brightness(0.8);
-        }
-
-        .avant-card:hover img {
-            filter: grayscale(0%) brightness(1.1);
-            transform: scale(1.1);
-        }
-
-        .card-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 30px;
-            background: linear-gradient(transparent, rgba(0,0,0,0.9));
-            opacity: 0;
-            transition: 0.4s;
-        }
-
-        .avant-card:hover .card-overlay {
-            opacity: 1;
-        }
-
-        /* Контакты */
-        .contact-grid {
-            padding: 100px 5%;
+        .container {
             display: flex;
+            gap: 30px;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 40px;
-            background: var(--glass);
+            max-width: 1200px;
         }
 
-        .contact-item {
+        .video-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            overflow: hidden;
+            width: 100%;
+            max-width: 500px;
+            transition: transform 0.3s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* Соотношение 16:9 */
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .video-info {
+            padding: 20px;
             text-align: center;
-            min-width: 250px;
         }
 
-        .contact-item i {
-            font-size: 2rem;
-            color: var(--gold-bright);
-            margin-bottom: 15px;
+        .video-info h2 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: var(--accent-color);
         }
 
-        .contact-item a {
-            display: block;
-            color: #fff;
-            text-decoration: none;
-            font-size: 1.1rem;
-            margin-top: 10px;
-            transition: 0.3s;
-        }
-
-        .contact-item a:hover {
-            color: var(--gold-bright);
-            text-shadow: 0 0 10px var(--gold-metallic);
-        }
-
-        /* Продуманные мелочи: курсор и скролл */
-        ::-webkit-scrollbar { width: 5px; }
-        ::-webkit-scrollbar-track { background: #000; }
-        ::-webkit-scrollbar-thumb { background: var(--gold-metallic); }
-
-        footer {
-            text-align: center;
-            padding: 50px;
-            color: rgba(255,255,255,0.4);
-            font-size: 0.8rem;
-            letter-spacing: 2px;
+        @media (max-width: 600px) {
+            .container {
+                flex-direction: column;
+            }
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <div class="bg-glow"></div>
+    <h1>Моя кулинарная подборка</h1>
 
-    <header>
-        <div class="logo-container">
-            <h1>NURJAMAL</h1>
-            <div class="subtitle">AVANT-GARDE FASHION HOUSE</div>
+    <div class="container">
+        <div class="video-card">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/O1ThGoCa0HE" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen></iframe>
+            </div>
+            <div class="video-info">
+                <h2>food1</h2>
+            </div>
         </div>
-    </header>
 
-    <main class="gallery-container">
-        <div class="avant-card"><img src="https://images.unsplash.com/photo-1539109132314-34a9c6553876?q=80&w=600" alt="Art 1"><div class="card-overlay">Look 01 / Abstract Shape</div></div>
-        <div class="avant-card"><img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=600" alt="Art 2"><div class="card-overlay">Look 02 / Gold Silk</div></div>
-        <div class="avant-card"><img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=600" alt="Art 3"><div class="card-overlay">Look 03 / Future Texture</div></div>
-        <div class="avant-card"><img src="https://images.unsplash.com/photo-1549416878-b9ca35c2d47a?q=80&w=600" alt="Art 4"><div class="card-overlay">Look 04 / Geometry</div></div>
-        <div class="avant-card"><img src="https://images.unsplash.com/photo-1581044777550-4cfa60707c33?q=80&w=600" alt="Art 5"><div class="card-overlay">Look 05 / Metallic Flow</div></div>
-        <div class="avant-card"><img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=600" alt="Art 6"><div class="card-overlay">Look 06 / Pure Gold</div></div>
-        <div class="avant-card"><img src="https://images.unsplash.com/photo-1537832816519-689ad163238b?q=80&w=600" alt="Art 7"><div class="card-overlay">Look 07 / High Tech</div></div>
-        <div class="avant-card"><img src="https://images.unsplash.com/photo-1503104834685-7205e8607eb9?q=80&w=600" alt="Art 8"><div class="card-overlay">Look 08 / Dark Avant</div></div>
-        <div class="avant-card"><img src="https://images.unsplash.com/photo-1502716119720-b23a93e5fe1b?q=80&w=600" alt="Art 9"><div class="card-overlay">Look 09 / Final Touch</div></div>
-    </main>
-
-    <section class="contact-grid">
-        <div class="contact-item">
-            <i class="fas fa-phone"></i>
-            <h3>Phone</h3>
-            <a href="tel:+996554701570">+996 554 701 570</a>
+        <div class="video-card">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/rNhHJYa-ZAQ" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen></iframe>
+            </div>
+            <div class="video-info">
+                <h2>food2</h2>
+            </div>
         </div>
-        <div class="contact-item">
-            <i class="fab fa-telegram"></i>
-            <h3>Telegram</h3>
-            <a href="https://t.me/Nurjamal11111" target="_blank">@Nurjamal11111</a>
-        </div>
-        <div class="contact-item">
-            <i class="fas fa-envelope"></i>
-            <h3>Email</h3>
-            <a href="mailto:nurzhamal.2509.kg@gmail.com">nurzhamal.2509.kg@gmail.com</a>
-        </div>
-    </section>
-
-    <footer>
-        &copy; 2024 NURJAMAL DESIGN. CREATED FOR ETERNITY.
-    </footer>
+    </div>
 
 </body>
 </html>
