@@ -26,14 +26,12 @@
         h1 {
             margin-bottom: 30px;
             font-weight: 300;
-            color: var(--text-color);
         }
 
         .container {
             display: flex;
-            gap: 30 : px;
-            flex-wrap: wrap;
             justify-content: center;
+            width: 100%;
             max-width: 1200px;
         }
 
@@ -43,9 +41,8 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             overflow: hidden;
             width: 100%;
-            max-width: 500px;
+            max-width: 600px; /* Сделал чуть шире для одного видео */
             transition: transform 0.3s ease;
-            margin-bottom: 20px;
         }
 
         .video-card:hover {
@@ -54,9 +51,8 @@
 
         .video-container {
             position: relative;
-            padding-bottom: 56.25%; /* Соотношение 16:9 */
+            padding-bottom: 56.25%; /* 16:9 */
             height: 0;
-            overflow: hidden;
         }
 
         .video-container iframe {
@@ -78,12 +74,6 @@
             font-size: 1.5rem;
             color: var(--accent-color);
         }
-
-        @media (max-width: 600px) {
-            .container {
-                flex-direction: column;
-            }
-        }
     </style>
 </head>
 <body>
@@ -102,21 +92,7 @@
                 </iframe>
             </div>
             <div class="video-info">
-                <h2>Вкусный рецепт 1</h2>
-            </div>
-        </div>
-
-        <div class="video-card">
-            <div class="video-container">
-                <iframe 
-                    src="https://www.youtube.com/embed/rNhHJYa-ZAQ" 
-                    title="YouTube video player" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                    allowfullscreen>
-                </iframe>
-            </div>
-            <div class="video-info">
-                <h2>Вкусный рецепт 2</h2>
+                <h2>Рецепт: Food 1</h2>
             </div>
         </div>
     </div>
