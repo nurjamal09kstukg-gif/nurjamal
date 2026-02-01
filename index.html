@@ -31,7 +31,7 @@
 
         .container {
             display: flex;
-            gap: 30px;
+            gap: 30 : px;
             flex-wrap: wrap;
             justify-content: center;
             max-width: 1200px;
@@ -45,6 +45,7 @@
             width: 100%;
             max-width: 500px;
             transition: transform 0.3s ease;
+            margin-bottom: 20px;
         }
 
         .video-card:hover {
@@ -92,23 +93,30 @@
     <div class="container">
         <div class="video-card">
             <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/O1ThGoCa0HE" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen></iframe>
+                <iframe 
+                    src="https://www.youtube.com/embed/O1ThGoCa0HE?si=mpO1Uh7GIGvca6yh" 
+                    title="YouTube video player" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    referrerpolicy="strict-origin-when-cross-origin" 
+                    allowfullscreen>
+                </iframe>
             </div>
             <div class="video-info">
-                <h2>food1</h2>
+                <h2>Вкусный рецепт 1</h2>
             </div>
         </div>
 
         <div class="video-card">
             <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/rNhHJYa-ZAQ" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen></iframe>
+                <iframe 
+                    src="https://www.youtube.com/embed/rNhHJYa-ZAQ" 
+                    title="YouTube video player" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
             </div>
             <div class="video-info">
-                <h2>food2</h2>
+                <h2>Вкусный рецепт 2</h2>
             </div>
         </div>
     </div>
